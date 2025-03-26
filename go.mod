@@ -1,3 +1,3 @@
-module github.com/pentops/golib
+module github.com/pentops/lib.go
 
 go 1.23.2

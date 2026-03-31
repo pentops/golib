@@ -1,9 +1,11 @@
 package gl
 
+//go:fix inline
 func Ptr[T any](v T) *T {
-	return &v
+	return new(v)
 }
 
+// Deprecated
 func Coalesce[T any](fallback T, try ...*T) T {
 	for _, v := range try {
 		if v != nil {
@@ -13,6 +15,7 @@ func Coalesce[T any](fallback T, try ...*T) T {
 	return fallback
 }
 
+// Deprecated
 func Opt[T any](v *T) (o T) {
 	if v == nil {
 		return // the default value, "", 0, false etc
@@ -20,6 +23,7 @@ func Opt[T any](v *T) (o T) {
 	return *v
 }
 
+// Deprecated
 func MustUnwrap[T any](v *T) T {
 	if v == nil {
 		panic("nil value")
@@ -27,6 +31,7 @@ func MustUnwrap[T any](v *T) T {
 	return *v
 }
 
+// Deprecated
 func Must[T any](v T, err error) T {
 	if err != nil {
 		panic(err)
